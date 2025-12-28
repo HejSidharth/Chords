@@ -1,0 +1,11 @@
+/node_modules
+/dist
+/build
+/public
+/src
+/test
+/docs
+/examples
+/src/data/chords.js
+/src/data/categories.js
+/src/data/chords.js
