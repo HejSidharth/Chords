@@ -19,6 +19,12 @@ import ChordDiagram from "./ChordDiagram";
 const ChordCard = ({ chord, index }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isYoutubeOpen, setIsYoutubeOpen] = useState(false);
+  const [selectedPosition, setSelectedPosition] = useState(0);
+
+  // Get all positions for this chord
+  const allPositions = chord.allPositions || [chord];
+  const currentPosition = allPositions[selectedPosition] || {};
+  const currentChord = { ...chord, ...currentPosition };
 
   // Extract YouTube video ID from URL
   const getYoutubeId = (url) => {
@@ -38,7 +44,10 @@ const ChordCard = ({ chord, index }) => {
     >
       <Card
         className="group h-full md:hover:border-yellow-500 transition-all duration-300 cursor-pointer"
-        onClick={() => setIsDialogOpen(true)}
+        onClick={() => {
+          setSelectedPosition(0);
+          setIsDialogOpen(true);
+        }}
       >
         <CardContent className="p-4 flex flex-col items-center gap-3">
           {/* Chord Name */}
@@ -92,28 +101,94 @@ const ChordCard = ({ chord, index }) => {
 
       {/* Large Chord Diagram Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-2xl border-border">
-          <DialogHeader className="pt-6 pb-2">
+        <DialogContent className="max-w-5xl border-border max-h-[90vh] overflow-y-auto">
+          <DialogHeader className="pt-6 pb-4">
             <DialogTitle className="font-newsreader text-3xl text-center">
               {chord.name}
             </DialogTitle>
+            {allPositions.length > 1 && (
+              <p className="text-sm text-muted-foreground text-center font-inter mt-2">
+                {allPositions.length} positions available
+              </p>
+            )}
           </DialogHeader>
-          <div className="flex flex-col items-center gap-6 pb-6">
-            <div className="w-full flex justify-center">
-              <ChordDiagram chord={chord} size="large" />
+
+          {allPositions.length > 1 ? (
+            // Multiple positions - show grid
+            <div className="space-y-6 pb-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                {allPositions.map((position, idx) => {
+                  const positionChord = { ...chord, ...position };
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.2, delay: idx * 0.05 }}
+                      className={`flex flex-col items-center gap-2 p-4 rounded-lg border-2 cursor-pointer transition-colors ${
+                        selectedPosition === idx
+                          ? "border-yellow-500 bg-yellow-500/10"
+                          : "border-border md:hover:border-yellow-500/50"
+                      }`}
+                      onClick={() => setSelectedPosition(idx)}
+                    >
+                      <div className="text-xs text-muted-foreground font-inter">
+                        Position {idx + 1}
+                      </div>
+                      <ChordDiagram chord={positionChord} />
+                      <div className="flex gap-1 text-xs text-muted-foreground font-mono">
+                        {positionChord.frets.map((fret, i) => (
+                          <span key={i} className="w-3 text-center">
+                            {fret === -1 ? "x" : fret}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Large view of selected position */}
+              <div className="flex flex-col items-center gap-4 pt-4 border-t border-border">
+                <h3 className="font-newsreader text-xl font-medium">
+                  Position {selectedPosition + 1}
+                </h3>
+                <div className="w-full flex justify-center">
+                  <ChordDiagram chord={currentChord} size="large" />
+                </div>
+                <div className="flex gap-3 text-sm text-muted-foreground font-mono">
+                  {currentChord.frets.map((fret, i) => (
+                    <span key={i} className="w-6 text-center">
+                      {fret === -1 ? "x" : fret}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-xs text-muted-foreground font-inter">
+                  Fret positions: E A D G B e
+                </p>
+              </div>
             </div>
-            {/* Fret numbers display */}
-            <div className="flex gap-3 text-sm text-muted-foreground font-mono">
-              {chord.frets.map((fret, i) => (
-                <span key={i} className="w-6 text-center">
-                  {fret === -1 ? "x" : fret}
-                </span>
-              ))}
+          ) : (
+            // Single position - show large view only
+            <div className="flex flex-col items-center gap-6 pb-6">
+              <div className="w-full flex justify-center">
+                <ChordDiagram chord={currentChord} size="large" />
+              </div>
+              <div className="flex gap-3 text-sm text-muted-foreground font-mono">
+                {currentChord.frets.map((fret, i) => (
+                  <span key={i} className="w-6 text-center">
+                    {fret === -1 ? "x" : fret}
+                  </span>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground font-inter">
+                Fret positions: E A D G B e
+              </p>
             </div>
-            <p className="text-xs text-muted-foreground font-inter">
-              Fret positions: E A D G B e
-            </p>
-            {chord.youtube && videoId && (
+          )}
+
+          {chord.youtube && videoId && (
+            <div className="flex justify-center pt-4 border-t border-border">
               <Button
                 variant="outline"
                 className="flex items-center gap-2 text-yellow-500 border-yellow-500 md:hover:bg-yellow-500 md:hover:text-black"
@@ -125,8 +200,8 @@ const ChordCard = ({ chord, index }) => {
                 <Youtube className="w-5 h-5" />
                 <span className="font-newsreader italic">Watch Tutorial</span>
               </Button>
-            )}
-          </div>
+            </div>
+          )}
         </DialogContent>
       </Dialog>
 

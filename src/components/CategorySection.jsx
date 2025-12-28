@@ -7,6 +7,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@/components/ui/collapsible';
+import { normalizeChord } from '@/data/chords';
 import ChordCard from './ChordCard';
 
 const CategorySection = ({ category, chords, isExpanded, onToggle }) => {
@@ -46,7 +47,7 @@ const CategorySection = ({ category, chords, isExpanded, onToggle }) => {
                 className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2"
               >
                 {chords.map((chord, index) => (
-                  <ChordCard key={chord.name} chord={chord} index={index} />
+                  <ChordCard key={chord.name} chord={normalizeChord(chord)} index={index} />
                 ))}
               </motion.div>
             )}

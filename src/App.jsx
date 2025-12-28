@@ -18,7 +18,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { chords, categories } from "./data/chords";
+import { chords, categories, normalizeChord } from "./data/chords";
 import { songs } from "./data/songs";
 import CategorySection from "./components/CategorySection";
 import ChordCard from "./components/ChordCard";
@@ -77,6 +77,7 @@ function App() {
         .filter((chord) =>
           chord.name.toLowerCase().includes(searchQuery.toLowerCase())
         )
+        .map(normalizeChord)
     : null;
 
   return (

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Music, Clock, Key, Hash } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { normalizeChord } from "@/data/chords";
 import ChordDiagram from "./ChordDiagram";
 
 const SongViewer = ({ song, allChords }) => {
@@ -22,7 +23,7 @@ const SongViewer = ({ song, allChords }) => {
   });
 
   // Match with chord data
-  const allChordsFlat = Object.values(allChords).flat();
+  const allChordsFlat = Object.values(allChords).flat().map(normalizeChord);
   const songChords = Array.from(chordNames)
     .map((chordName) => {
       return allChordsFlat.find(
