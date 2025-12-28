@@ -60,32 +60,8 @@
   }
 }
 
-/* Disable hover effects on touch devices to prevent sticky hover states */
-@media (hover: none) and (pointer: coarse) {
-  /* Disable hover border changes */
-  .hover\:border-yellow-500:hover {
-    border-color: transparent;
-  }
-  
-  /* Disable hover text color changes */
-  .hover\:text-yellow-500:hover {
-    color: hsl(var(--muted-foreground));
-  }
-  
-  /* Disable hover background changes */
-  .hover\:bg-transparent:hover {
-    background-color: transparent;
-  }
-  
-  .hover\:bg-accent:hover {
-    background-color: transparent;
-  }
-  
-  /* Disable group hover effects */
-  .group:hover .group-hover\:border-yellow-500 {
-    border-color: transparent;
-  }
-}
+/* Hover effects are now controlled via Tailwind's responsive prefixes (md:hover:)
+   No need for additional CSS overrides - hover only works on md breakpoint and up */
 
 /* Scrollbar Styles */
 ::-webkit-scrollbar {

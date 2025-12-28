@@ -17,7 +17,7 @@ const CategorySection = ({ category, chords, isExpanded, onToggle }) => {
         <CollapsibleTrigger asChild>
           <Button
             variant="ghost"
-            className="font-newsreader italic font-medium text-lg border-b-2 border-transparent hover:border-yellow-500 hover:bg-transparent transition-colors flex items-center gap-2 p-0 h-auto"
+            className="font-newsreader italic font-medium text-lg border-b-2 border-transparent md:hover:border-yellow-500 md:hover:bg-transparent transition-colors flex items-center gap-2 p-0 h-auto"
           >
             <span>{category.name}</span>
             <span className="text-muted-foreground text-sm not-italic font-inter">

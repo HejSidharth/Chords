@@ -37,3 +37,4 @@ lerna-debug.log*
 
 # Vite
 .vite
+THEME_CARD.md

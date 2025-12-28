@@ -92,7 +92,7 @@ function App() {
                       alt="Rockstar"
                       className="w-10 h-10 object-contain select-none"
                     />
-                    <h1 className="font-bold font-newsreader text-2xl border-b-2 border-transparent hover:border-yellow-500 transition-colors cursor-default">
+                    <h1 className="font-bold font-newsreader text-2xl border-b-2 border-transparent md:hover:border-yellow-500 transition-colors cursor-default">
                       My Chords
                     </h1>
                   </div>
@@ -104,7 +104,7 @@ function App() {
                           variant="ghost"
                           size="icon"
                           onClick={toggleTheme}
-                          className="text-muted-foreground hover:text-yellow-500 hover:bg-transparent"
+                          className="text-muted-foreground md:hover:text-yellow-500 md:hover:bg-transparent"
                         >
                           {isDark ? (
                             <Sun className="w-5 h-5" />
@@ -145,7 +145,7 @@ function App() {
                       variant="ghost"
                       size="sm"
                       onClick={expandAll}
-                      className="text-muted-foreground hover:text-yellow-500 hover:bg-transparent font-newsreader italic"
+                      className="text-muted-foreground md:hover:text-yellow-500 md:hover:bg-transparent font-newsreader italic"
                     >
                       Expand All
                     </Button>
@@ -154,7 +154,7 @@ function App() {
                       variant="ghost"
                       size="sm"
                       onClick={collapseAll}
-                      className="text-muted-foreground hover:text-yellow-500 hover:bg-transparent font-newsreader italic"
+                      className="text-muted-foreground md:hover:text-yellow-500 md:hover:bg-transparent font-newsreader italic"
                     >
                       Collapse All
                     </Button>
@@ -258,7 +258,7 @@ function App() {
                               }
                             }, 100);
                           }}
-                          className="text-xs text-muted-foreground hover:text-yellow-500 hover:bg-transparent font-inter px-2"
+                          className="text-xs text-muted-foreground md:hover:text-yellow-500 md:hover:bg-transparent font-inter px-2"
                         >
                           {cat.name.slice(0, 3)}
                         </Button>
