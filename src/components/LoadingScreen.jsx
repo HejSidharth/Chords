@@ -164,7 +164,7 @@ const LoadingScreen = () => {
             />
           </motion.div>
           <h1 className="font-newsreader text-3xl font-bold text-foreground text-center">
-            My Chords
+            Strummm
           </h1>
         </motion.div>
       </div>

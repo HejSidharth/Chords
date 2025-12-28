@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,28 +6,46 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
+    /* warm cream paper */
+    --background: 38 56% 94%;
+    --foreground: 28 22% 18%;
+
+    /* slightly lifted “card paper” */
+    --card: 38 48% 96%;
+    --card-foreground: 28 22% 18%;
+
+    --popover: 38 48% 96%;
+    --popover-foreground: 28 22% 18%;
+
+    /* rich warm ink / walnut */
+    --primary: 25 35% 22%;
+    --primary-foreground: 38 56% 94%;
+
+    /* soft sand */
+    --secondary: 36 34% 90%;
+    --secondary-foreground: 25 35% 22%;
+
+    /* muted parchment */
+    --muted: 36 32% 89%;
+    --muted-foreground: 28 12% 40%;
+
+    /* subtle saffron-wash accent */
+    --accent: 34 45% 88%;
+    --accent-foreground: 25 35% 22%;
+
+    /* keep destructive readable but warmer */
+    --destructive: 2 62% 45%;
+    --destructive-foreground: 38 56% 94%;
+
+    /* warm borders/inputs */
+    --border: 34 22% 82%;
+    --input: 34 22% 82%;
+
+    /* focus ring as warm ink */
+    --ring: 25 35% 22%;
+
     --radius: 0.5rem;
   }
-
   .dark {
     --background: 0 0% 10%;
     --foreground: 0 0% 89.8%;
@@ -75,7 +93,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1A1A1A;
+  background: #1a1a1a;
   border-radius: 10px;
 }
 
@@ -91,7 +109,7 @@ html {
 
 /* Chord diagram styles */
 .chord-diagram {
-  font-family: 'Inter', monospace;
+  font-family: "Inter", monospace;
 }
 
 .string-line {

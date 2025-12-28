@@ -93,7 +93,7 @@ function App() {
                       className="w-10 h-10 object-contain select-none"
                     />
                     <h1 className="font-bold font-newsreader text-2xl border-b-2 border-transparent md:hover:border-yellow-500 transition-colors cursor-default">
-                      My Chords
+                        Strummm
                     </h1>
                   </div>
 
