@@ -105,9 +105,9 @@ function App() {
                     <img
                       src="/rockstar-face.png"
                       alt="Rockstar"
-                      className="w-10 h-10 object-contain select-none"
+                      className="w-10 h-10 object-contain select-none flex-shrink-0"
                     />
-                    <h1 className="font-bold font-newsreader text-2xl border-b-2 border-transparent md:hover:border-yellow-500 transition-colors cursor-default">
+                    <h1 className="font-bold font-newsreader text-2xl border-b-2 border-transparent md:hover:border-yellow-500 transition-colors cursor-default leading-none">
                       Strummm
                     </h1>
                   </div>
